@@ -1,0 +1,28 @@
+---
+title: "Homework5"
+author: "Naga Asritha Narra"
+date: "2022-10-14"
+output: html_document
+---
+```{r}
+library(fpp)
+library(fpp2)
+data("AirPassengers")
+head(AirPassengers)
+plot(AirPassengers)
+stl_decomp <- stl(AirPassengers,s.window ="periodic")
+plot(stl_decomp)
+attributes(stl_decomp)
+seasadj(stl_decomp)
+plot(AirPassengers)
+lines(seasadj(stl_decomp), col="Red")
+f_stl <- forecast(stl_decomp)
+f_stl <- forecast(stl_decomp,h=15)
+f_stl
+plot(f_stl)
+decomp_Air <- decompose(AirPassengers)
+attributes(decomp_Air)
+seasadj(decomp_Air)
+
+```
+
